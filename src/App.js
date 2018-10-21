@@ -18,6 +18,13 @@ class App extends Component {
     this.setState({ messageList: json })
   }
 
+  dataFetcher = () => {
+    fetch('http://localhost:8082/api/messages')
+      .then(response => response.json())
+      .then(data => this.setState({ messageList: data }))
+  }
+
+
   dataPatcher = (messageID, command) => {
     console.log(messageID, command)
 
@@ -34,6 +41,8 @@ class App extends Component {
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error:', error));
     
+
+    this.dataFetcher()
   }
 
 
@@ -41,7 +50,7 @@ class App extends Component {
 
     return (
       <div className="col-md-12">
-        <Toolbar />
+        <Toolbar messageList={this.state.messageList}/>
         <NewMessage />
         <MessageList dataPatcher={this.dataPatcher} messageList={this.state.messageList}/>
       </div>
