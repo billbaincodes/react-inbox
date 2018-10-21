@@ -38,20 +38,23 @@ class App extends Component {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
+    .then(response => console.log('Success:', response))
+    .then(this.dataFetcher)
     .catch(error => console.error('Error:', error));
-    
-
-    this.dataFetcher()
   }
+
+  composeToggle = () => {
+    this.setState({compose: !this.state.compose})
+  }
+
 
 
   render() {
 
     return (
       <div className="col-md-12">
-        <Toolbar messageList={this.state.messageList}/>
-        <NewMessage />
+        <Toolbar composeToggle={this.composeToggle} messageList={this.state.messageList}/>
+        {this.state.compose ? <NewMessage /> : ''}
         <MessageList dataPatcher={this.dataPatcher} messageList={this.state.messageList}/>
       </div>
     )

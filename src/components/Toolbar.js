@@ -1,15 +1,18 @@
 import React from 'react';
 
-const Toolbar = () => {
+const Toolbar = ({messageList, composeToggle}) => {
+
+  let unreadList = (messageList.filter(message => message.read !== undefined && message.read === false))
+
     return (
       <div className="row toolbar">
       <div className="col-md-12">
         <p className="pull-right">
-          <span className="badge badge">2</span>
-          unread messages
+          <span className="badge badge">{unreadList.length}</span>
+          {unreadList.length === 1 ? 'unread messages' : 'unread messages'}
         </p>
 
-        <a className="btn btn-danger">
+        <a  onClick={composeToggle} className="btn btn-danger">
           <i className="fa fa-plus"></i>
         </a>
 
