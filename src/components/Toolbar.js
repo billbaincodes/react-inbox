@@ -9,7 +9,7 @@ const Toolbar = ({messageList, composeToggle}) => {
       <div className="col-md-12">
         <p className="pull-right">
           <span className="badge badge">{unreadList.length}</span>
-          {unreadList.length === 1 ? 'unread messages' : 'unread messages'}
+          {unreadList.length === 1 ? 'unread message' : 'unread messages'}
         </p>
 
         <a  onClick={composeToggle} className="btn btn-danger">
