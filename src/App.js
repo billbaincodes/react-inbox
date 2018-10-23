@@ -47,20 +47,25 @@ class App extends Component {
     .catch(error => console.error('Error:', error))
   }
 
-  dataPoster = () => {
-    this.setState({compose: false})
-    // fetch('http://localhost:8082/api/messages', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-
-    //   }),
-    //   headers:{
-    //     'Content-Type': 'application/json'
-    //   }
-    // }).then(res => res.json())
-    // .then(response => console.log('Success:', response))
-    // .then(this.dataFetcher)
-    // .catch(error => console.error('Error:', error))
+  dataPoster = (newMessage) => {
+    console.log(newMessage)
+    fetch('http://localhost:8082/api/messages', {
+      method: 'POST',
+      body: JSON.stringify({
+        "subject": newMessage.subjectValue,
+        "starred": false,
+        "labels": [],
+        "body": newMessage.bodyValue,
+        "id": this.state.messageList.length +1
+      }),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(response => console.log('Success:', response))
+    .then(this.setState({compose: false}))
+    .then(this.dataFetcher)
+    .catch(error => console.error('Error:', error))
   }
 
   selector = () => {

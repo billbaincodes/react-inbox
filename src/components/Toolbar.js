@@ -12,7 +12,7 @@ const Toolbar = ({messageList, composeToggle}) => {
           {unreadList.length === 1 ? 'unread message' : 'unread messages'}
         </p>
 
-        <a  onClick={composeToggle} className="btn btn-danger">
+        <a onClick={composeToggle} className="btn btn-danger">
           <i className="fa fa-plus"></i>
         </a>
 

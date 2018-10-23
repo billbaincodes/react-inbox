@@ -20,6 +20,10 @@ class NewMessage extends Component {
     this.setState({bodyValue: event.target.value})
   }
 
+  dataPasser = () => {
+    this.props.dataPoster(this.state)
+  }
+
   render() {
     return (
       <form className="form-horizontal well">
@@ -42,7 +46,7 @@ class NewMessage extends Component {
           </div>
         <div className="form-group">
           <div className="col-sm-8 col-sm-offset-2">
-            <input type="submit" onClick={this.props.dataPoster} value="Send" className="btn btn-primary" />
+            <input onClick={this.dataPasser} value="Send" className="btn btn-primary" />
           </div>
         </div>
       </form>
