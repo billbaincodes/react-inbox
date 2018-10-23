@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Label from './Label'
 
 
@@ -15,13 +15,12 @@ const Message = ({ message, dataPatcher }) => {
     dataPatcher(message.id, 'read')
   }
 
-
   return (
-    <div onClick={readSetter}className={`row message ${message.read === undefined || message.read ? "read" : "unread"}`}>
+    <div onClick={readSetter} className={`row message ${message.read === undefined || message.read ? 'read' : 'unread'} ${message.selected ? 'selected' : ''} `}>
       <div className="col-xs-1">
         <div className="row">
           <div className="col-xs-2">
-            <input type="checkbox" />
+            <input type="checkbox" checked={message.selected ? true : false} />
           </div>
           <div className="col-xs-2">
             <i onClick={starSetter} className={`star fa ${message.starred ? 'fa-star' : 'fa-star-o'}`}></i>
@@ -30,7 +29,7 @@ const Message = ({ message, dataPatcher }) => {
       </div>
       <div className="col-xs-11">
       {message.labels.map(label => {return (<Label messageLabels={label} />)})}
-        <a href="#">
+        <a>
           {message.subject}
         </a>
       </div>
