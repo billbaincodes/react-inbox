@@ -5,7 +5,7 @@ import React from 'react'
 const Label = ({ messageLabels }) => {
 
   return (
-      <span class="label label-warning"> {messageLabels} </span>
+      <span className='label label-warning'> {messageLabels} </span>
   )
 } 
 
