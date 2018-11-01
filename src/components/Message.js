@@ -29,5 +29,4 @@ const Message = ({ message, dataPatcher, messageSelector }) => {
   )
 }
 
-
 export default Message

@@ -4,7 +4,6 @@ import Toolbar from './components/Toolbar'
 import MessageList from './components/MessageList'
 import NewMessage from './components/NewMessage'
 
-
 class App extends Component {
 
   state ={
@@ -129,7 +128,7 @@ class App extends Component {
       </div>
     )
   }
-  
+
 }
 
 export default App
