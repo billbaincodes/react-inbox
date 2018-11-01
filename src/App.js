@@ -29,10 +29,9 @@ class App extends Component {
           message.selected = false 
           return message
         }
-      }) 
+      })
     )
   }
-
 
   dataPatcher = (messageID, command, read) => {  
     fetch('http://localhost:8082/api/messages', {
@@ -46,17 +45,16 @@ class App extends Component {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json())
-    .then(response => console.log('Success:', response))
     .then(this.dataFetcher)
     .catch(error => console.error('Error:', error))
   }
-
 
   dataPoster = (newMessage) => {
     fetch('http://localhost:8082/api/messages', {
       method: 'POST',
       body: JSON.stringify({
         'subject': newMessage.subjectValue,
+        'read': false,
         'starred': false,
         'labels': [],
         'body': newMessage.bodyValue,
@@ -112,22 +110,26 @@ class App extends Component {
     }
   }
 
-
   composeToggle = () => {
     this.setState({ compose: !this.state.compose })
   }
 
-
   render() {
-
     return (
       <div className='col-md-12'>
-        <Toolbar selectAll={this.selectAll} unreadMarker={this.unreadMarker} readMarker={this.readMarker} composeToggle={this.composeToggle} messageList={this.state.messageList}/>
-        {this.state.compose ? <NewMessage dataPoster={this.dataPoster}/> : ''}
-        <MessageList messageSelector={this.messageSelector} dataPatcher={this.dataPatcher} messageList={this.state.messageList}/>
+        <Toolbar  selectAll={this.selectAll} 
+                  unreadMarker={this.unreadMarker} 
+                  readMarker={this.readMarker} 
+                  composeToggle={this.composeToggle} 
+                  messageList={this.state.messageList} />
+        {this.state.compose ? <NewMessage dataPoster={this.dataPoster} /> : ''}
+        <MessageList  messageSelector={this.messageSelector} 
+                      dataPatcher={this.dataPatcher} 
+                      messageList={this.state.messageList} />
       </div>
     )
   }
+  
 }
 
 export default App

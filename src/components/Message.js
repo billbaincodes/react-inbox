@@ -1,14 +1,11 @@
 import React from 'react'
 import Label from './Label'
 
-
 const Message = ({ message, dataPatcher, messageSelector }) => {
-
 
   let starSetter = () => {
     dataPatcher(message.id, 'star')   
   }
-
 
   return (
     <div className={`row message ${message.read === undefined || message.read ? 'read' : 'unread'} ${message.selected ? 'selected' : ''} `}>
@@ -23,7 +20,7 @@ const Message = ({ message, dataPatcher, messageSelector }) => {
         </div>
       </div>
       <div className='col-xs-11'>
-      {message.labels.map((label, i) => {return (<Label key={i} messageLabels={label} />)})}
+        {message.labels.map((label, i) => {return (<Label key={i} messageLabels={label} />)})}
         <a>
           {message.subject}
         </a>
