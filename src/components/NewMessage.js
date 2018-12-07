@@ -11,12 +11,10 @@ class NewMessage extends Component {
   }
 
   subjectUpdater = (event) => {
-    console.log(this.state.subjectValue)
     this.setState({subjectValue: event.target.value})
   }
 
   bodyUpdater = (event) => {
-    console.log(this.state.bodyValue)
     this.setState({bodyValue: event.target.value})
   }
 
